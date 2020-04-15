@@ -12,7 +12,7 @@ RUN addgroup --system neo4j && adduser --system --no-create-home --home "${NEO4J
 
 COPY ./local-package/* /tmp/
 
-RUN apt-get clean \
+RUN apt-get clean && apt-get update \
      && apt-get install -y apt-transport-https \
      && apt install -y curl wget gosu jq \
      && curl -L --fail --silent --show-error "https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini" > /sbin/tini \
