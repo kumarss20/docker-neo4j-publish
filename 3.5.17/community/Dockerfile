@@ -14,6 +14,7 @@ COPY ./local-package/* /tmp/
 
 RUN apt update \
      && apt install -y curl wget gosu jq \
+     && apt-get install -y apt-transport-https \
      && curl -L --fail --silent --show-error "https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini" > /sbin/tini \
      && echo "${TINI_SHA256}  /sbin/tini" | sha256sum -c --strict --quiet \
      && chmod +x /sbin/tini \
